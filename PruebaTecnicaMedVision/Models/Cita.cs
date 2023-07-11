@@ -22,6 +22,7 @@ namespace PruebaTecnicaMedVision.Models
 			set => HoraCitaTimeSpan = TimeSpan.Parse(value);
 		}
 		public string Lugar { get; set; }
+		public int IdMotivoCita { get; set; }
 		public int IdPersona { get; set; }
 		[JsonIgnore]
 		public Persona? Persona { get; set; }

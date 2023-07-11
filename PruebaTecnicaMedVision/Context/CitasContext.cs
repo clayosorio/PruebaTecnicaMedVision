@@ -19,23 +19,14 @@ namespace PruebaTecnicaMedVision.Context
 		   );
 
 			modelBuilder.Entity<Cita>().HasData(
-				new Cita { IdCita = 1, FechaCita = DateTime.Now.AddDays(1), HoraCita = "10:00", Lugar = "Clinica nuestra", IdPersona = 1 },
-				new Cita { IdCita = 2, FechaCita = DateTime.Now.AddDays(2), HoraCita = "09:00", Lugar = "Clinica nuestra", IdPersona = 2 }
+				new Cita { IdCita = 1, FechaCita = DateTime.Now.AddDays(1), HoraCita = "10:00", Lugar = "Clinica nuestra", IdMotivoCita = 1, IdPersona = 1 },
+				new Cita { IdCita = 2, FechaCita = DateTime.Now.AddDays(2), HoraCita = "09:00", Lugar = "Clinica nuestra", IdMotivoCita = 2, IdPersona = 2 }
 			);
 
 			modelBuilder.Entity<MotivoCita>().HasData(
 				new MotivoCita { IdMotivo = 1, Descripcion = "Cita Ortopedia" },
 				new MotivoCita { IdMotivo = 2, Descripcion = "Cita Anesteciologo" }
 			);
-			modelBuilder.Entity<Cita>()
-				.HasOne(c => c.Persona)
-				.WithMany(p => p.Citas)
-				.HasForeignKey(c => c.IdPersona);
-
-			modelBuilder.Entity<Cita>()
-				.HasMany(c => c.MotivosCita)
-				.WithMany(m => m.Citas)
-				.UsingEntity(j => j.ToTable("CitaMotivoCita"));
 		}
 	}
 }
