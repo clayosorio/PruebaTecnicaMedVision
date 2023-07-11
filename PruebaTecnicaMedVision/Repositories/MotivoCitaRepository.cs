@@ -15,7 +15,7 @@ namespace PruebaTecnicaMedVision.Repositories
 
 		public async Task<int> ObtenerCantidadDeCitasPorIdMotivoCita(int idMotivoCita)
 		{
-			int cantidadCitas = _citasContext.Citas.Count(c => c.MotivosCita.Any(m => m.IdMotivo == idMotivoCita));
+			int cantidadCitas = _citasContext.Citas.Count(c => c.IdMotivoCita == idMotivoCita);
 			return cantidadCitas;
 		}
     }
